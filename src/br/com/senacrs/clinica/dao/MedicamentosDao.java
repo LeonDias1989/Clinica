@@ -35,6 +35,30 @@ public class MedicamentosDao extends DatabaseConnection {
 		return lista;
 	}
 	
+	public static List<Medicamento> getMedicamentoFromSearch(String search) {
+		Connection connect = connect();
+		List<Medicamento> lista = new ArrayList<Medicamento>();
+		if(connect != null){
+			try {
+				PreparedStatement pstmt = connect.prepareStatement("SELECT id, nome FROM medicamentos WHERE nome LIKE ? ORDER BY nome ASC");
+				pstmt.setString(1, "%" + search + "%");
+				ResultSet result = pstmt.executeQuery();
+				while(result.next()){
+					lista.add(new Medicamento(
+						result.getInt("id"),
+						result.getString("nome")
+					));
+				}
+				result.close();
+			} catch(Exception e){
+				e.printStackTrace();
+			} finally {
+				close(connect);
+			}
+		}
+		return lista;
+	}
+	
 	public static Medicamento getMedicamentoById(int id) {
 		Connection connect = connect();
 		Medicamento medicamento = null;

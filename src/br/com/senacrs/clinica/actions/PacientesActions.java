@@ -18,17 +18,29 @@ public class PacientesActions extends ActionController implements ActionMenu {
 	@Override
 	public void menu() {
 		out.println();
-		out.println("[1] Cadastrar");
-		out.println("[2] Listar");
+		out.println("[1] Buscar");
+		out.println("[2] Cadastrar");
+		out.println("[3] Listar Todos");
 		out.println("[0] Sair");
 
 		switch(sc.nextInt()){
-		case 1: cadastraPaciente(); break;
-		case 2: mostraPacienteLista(); break;	
-		case 0: return;
-		default: out.println("Opcao invalida"); break;
+			case 1: buscarPacientes(); break;
+			case 2: cadastraPaciente(); break;
+			case 3: mostraPacienteLista(); break;	
+			case 0: return;
+			default: out.println("Opcao invalida"); break;
 		}
 		menu();
+	}
+
+	private void buscarPacientes(){
+		out.println("-- Procurar Pacientes --");
+		out.println();
+		
+		//TODO: Implementar
+		
+		out.println();
+		pause();
 	}
 
 	private void mostraPacienteLista(){
@@ -54,7 +66,12 @@ public class PacientesActions extends ActionController implements ActionMenu {
 	}
 
 	private void cadastraPaciente(){
-
-
+		out.println("-- Cadastrar Pacientes --");
+		out.println();
+		
+		//TODO: Implementar
+		
+		out.println();
+		pause();
 	}
 }
