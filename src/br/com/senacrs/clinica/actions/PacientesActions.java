@@ -37,8 +37,23 @@ public class PacientesActions extends ActionController implements ActionMenu {
 		out.println("-- Procurar Pacientes --");
 		out.println();
 		
-		//TODO: Implementar
+		String buscar="";
+		out.println("Digite o Paciente que voce deseja buscar: ");
+		buscar = sc.next();
 		
+		List<Paciente> pacientes = PacientesDao.getPacientesFromSearch(buscar);
+		
+		if(pacientes.size() > 0){
+			for(Paciente paciente : pacientes){
+				out.println("ID: " + paciente.getId() +
+							" Nome: " + paciente.getNome()+
+							" CPF: " + paciente.getCpf()+
+							" Telefone: " + paciente.getTelefone()
+						);
+			}
+		} else {
+			out.println("Sem pacientes cadastrados.");
+		}
 		out.println();
 		pause();
 	}
@@ -69,7 +84,17 @@ public class PacientesActions extends ActionController implements ActionMenu {
 		out.println("-- Cadastrar Pacientes --");
 		out.println();
 		
-		//TODO: Implementar
+		String cadastro;
+		Paciente cadastraPaciente = new Paciente();
+		out.println("Digite o Nome do Paciente: ");
+		cadastro = sc.next();
+		cadastraPaciente.setNome(cadastro);
+		out.println("Digite o CPF do Paciente");
+		cadastro = sc.next();
+		cadastraPaciente.setCpf(cadastro);
+		out.println("Digite o Telefone do Paciente:");
+		cadastro = sc.next();
+		cadastraPaciente.setTelefone(cadastro);
 		
 		out.println();
 		pause();
